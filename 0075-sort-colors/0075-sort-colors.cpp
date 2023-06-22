@@ -1,18 +1,32 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
+        //Using Dutch National Flag Algorithm
         int n=nums.size();
+        int low,mid,high;
+        low=0;
+        mid=0;
+        high=n-1;
+        while(mid<=high)
+        {
+            if(nums[mid]==0)
+            {
+                swap(nums[mid],nums[low]);
+                mid++,low++;
+            }
+            else if(nums[mid]==1)
+            {
+                mid++;
+            }
+            else if(nums[mid]==2)
+            {
+                swap(nums[mid],nums[high]);
+                high--;
+            }
+        }
         for(int i=0;i<n;i++)
         {
-            for(int j=0;j<n-1;j++)
-            {
-            if(nums[j]>nums[j+1])
-            swap(nums[j],nums[j+1]);
-        }
-        }
-        for(int j=0;j<nums.size();j++)
-        {
-            cout<<nums[j];
+            cout<<nums[i];
         }
     }
 };
