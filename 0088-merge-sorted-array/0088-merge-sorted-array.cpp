@@ -14,7 +14,13 @@ public:
                 nums1[insertIndex--] = nums2[j--];
             }
         }
-
+        // If there are remaining elements in nums1, insert them into nums1
+        while(i>=0)
+        {
+            nums1[insertIndex]=nums1[i];
+            insertIndex--;
+            i--;
+        }
         // If there are remaining elements in nums2, insert them into nums1
         while (j >= 0) {
             nums1[insertIndex--] = nums2[j--];
