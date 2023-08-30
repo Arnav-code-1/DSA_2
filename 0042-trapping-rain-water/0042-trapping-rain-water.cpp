@@ -13,9 +13,9 @@ public:
          for(int j=height.size()-1;j>=0;j--)
          {
              maxr=max(height[j],maxr);
-             rightar.insert(rightar.begin(),maxr);
+             rightar.push_back(maxr);
          }
-        //  reverse(rightar.begin(),rightar.end());
+        reverse(rightar.begin(),rightar.end());
         int minq=0;
         int res=0;
         for(int k=0;k<height.size();k++)
