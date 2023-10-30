@@ -1,28 +1,27 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-         vector<int> leftar;
-         vector<int> rightar;
-         int maxl=0;
-         int maxr=0;
-         for(int i=0;i<height.size();i++)
-         {
-             maxl=max(height[i],maxl);
-             leftar.push_back(maxl);
-         }
-         for(int j=height.size()-1;j>=0;j--)
-         {
-             maxr=max(height[j],maxr);
-             rightar.push_back(maxr);
-         }
-        reverse(rightar.begin(),rightar.end());
-        int minq=0;
-        int res=0;
-        for(int k=0;k<height.size();k++)
-        {
-            minq=min(leftar[k],rightar[k]);
-            res+=minq-height[k];
-        }
-        return res;
-         }
+    int maxi=0;
+    int arr2[height.size()];
+    for(int i=0;i<height.size();i++)
+    {
+        maxi=max(maxi,height[i]);
+        arr2[i]=maxi;
+    }
+    int arr3[height.size()];
+    int maxi2=0;
+    for(int i=height.size()-1;i>0;i--)
+    {
+        maxi2=max(maxi2,height[i]);
+        arr3[i]=maxi2;    
+    }
+    int min1=0;
+    int sum=0;
+    for(int i=1;i<height.size();i++)
+    {
+            min1=min(arr2[i],arr3[i]);
+            sum=sum+(min1-height[i]);
+    }
+    return sum;
+    }
 };
